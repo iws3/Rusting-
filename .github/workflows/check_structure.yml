@@ -1,0 +1,47 @@
+name: Check PR Structure
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  check-student-folder:
+    runs-on: ubuntu-latest
+    name: Verify files are in student folder only
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Get list of changed files
+        id: changed-files
+        run: |
+          git diff --name-only origin/main...HEAD > changed_files.txt
+          cat changed_files.txt
+
+      - name: Check all changes are in students/ folder
+        run: |
+          # Get branch name to extract username
+          BRANCH_NAME="${{ github.head_ref }}"
+          echo "Branch: $BRANCH_NAME"
+
+          # Read changed files
+          while IFS= read -r file; do
+            # Skip the .gitkeep file
+            if [[ "$file" == "students/.gitkeep" ]]; then
+              continue
+            fi
+
+            # Every changed file must be inside students/
+            if [[ "$file" != students/* ]]; then
+              echo "❌ ERROR: You modified a file outside the students/ folder:"
+              echo "   $file"
+              echo ""
+              echo "You may only modify files inside students/your_username/"
+              exit 1
+            fi
+          done < changed_files.txt
+
+          echo "✅ All changed files are inside the students/ folder."
