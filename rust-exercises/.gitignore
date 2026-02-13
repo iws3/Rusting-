@@ -1,0 +1,17 @@
+# Rust build artifacts
+target/
+*.exe
+*.pdb
+
+# Cargo lock files in student solutions
+Cargo.lock
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
