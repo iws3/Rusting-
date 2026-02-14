@@ -36,10 +36,13 @@ fn exercise_1() {
     let value4: char = '🦀';
     let value5: bool = true;
     let value6: u32 = 1000000000;
-    println!("The value of value1: {}", calue1);
+    println!("The value of value1: {}", value1);
     println!("The value of value2: {}", value2);
     println!("The value of value3: {}", value3);
     println!("The value of value4: {}", value4);
     println!("The value of value5: {}", value5);
     println!("The value of value6: {}", value6);
+}
+fn main(){
+    exercise_1();
 }
