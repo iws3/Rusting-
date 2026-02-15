@@ -24,8 +24,15 @@
 
 fn exercise_2(){
     // create a turple here
-    let password_tuple:(i32, i32, i32)=(1,3,4);
+    let password_tuple:(&str, u8, [char; 2], bool)=("john",33,['w','r'], false);
+    let (name, age, char_2,is_valid)=password_tuple;
+
     println!("The values of my tuples are :{:?}", password_tuple);
+    println!("NAME: {}", name);
+    println!("AGE: {}", age);
+    println!("CHAR 1: {}", char_2[0]);
+    println!("ISVALID: {}", is_valid);
+    println!("DOT..{}", password_tuple.0);
 
 }
 
