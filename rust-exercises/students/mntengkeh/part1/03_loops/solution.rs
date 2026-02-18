@@ -26,7 +26,14 @@ fn exercise_2() {
 
 // Exercise 3
 fn exercise_3() {
-    
+		println!("Multiplication Table\n");
+		for i in 1..6 {
+			for j in 1..6 {
+				println!("{} x {} = {}", i, j, i * j);
+			}
+			println!("\n");
+		}
+		
 }
 
 fn main() {
