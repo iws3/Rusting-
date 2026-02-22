@@ -131,7 +131,16 @@ fn exercise_3(c:f32) {
         let x=(c*9.0/5.0) + 32.0;
         x
     };
+
+    let string_stats={
+        let greetings="Hello, Rustaceans!";
+        let length=greetings.len();
+        let uppercase=greetings.to_uppercase();
+        (greetings, length, uppercase)
+    };
     println!("The value of celsius to fahrenheit is : {}", celsius_to_fahrenheit);
+    println!("The string is : {}, its length is : {} and its uppercase version is : {}", string_stats.0, string_stats.1, string_stats.2);
+    println!("Theb turple returned is: {:?}", string_stats)
 }
 
 fn main() {
