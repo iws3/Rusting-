@@ -84,7 +84,7 @@ to variables:
 
 3. `collatz_steps`: starting from `27`, count how many steps it
    takes to reach `1` using the Collatz conjecture inside a block:
-   - If n is even: n = n / 2
+   - If n is even: n = n / 2 
    - If n is odd: n = 3 * n + 1
    - Count each step
 
