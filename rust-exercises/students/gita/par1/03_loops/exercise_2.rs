@@ -6,6 +6,9 @@
 // - Divisible by 7
 
 fn exercise_2(mut n: u64)  {
+
+    let mut perfectSqare=[i32, 45];
+
     loop {
         n = n - 1;
         let m = (n as f64).sqrt() as u64;
