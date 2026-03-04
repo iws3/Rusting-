@@ -7,6 +7,7 @@ appending_string();
 concatenating_string();
 replacing_part_string();
 checking_contains();
+spliting_String();
 
 }
 
@@ -59,4 +60,12 @@ fn checking_contains() {
     else {{
         println!("not found");
     }}
+}
+
+fn spliting_String() {
+    let s=String::from("hello world rust Use the Export Audit button to download a high-readability CSV containing names, institutions,
+contract values, debts, and a full monthly payment audit strin");
+    for part in s.split(' ') {
+        println!("{}", part)
+    }
 }
