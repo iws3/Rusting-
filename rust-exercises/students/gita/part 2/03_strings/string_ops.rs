@@ -6,6 +6,7 @@ let s="initial content".to_string(); //same as above
 appending_string();
 concatenating_string();
 replacing_part_string();
+checking_contains();
 
 }
 
@@ -45,4 +46,17 @@ fn replacing_part_string() {
     let new_s=s.replace("apples", "oranges");
     println!("{}", new_s); //I like ornages
 
+}
+
+
+fn checking_contains() {
+    // checking if string contains something
+    let s=String::from("Hello, world");
+    if s.contains("world") {
+        println!("found it")
+    }
+
+    else {{
+        println!("not found");
+    }}
 }
