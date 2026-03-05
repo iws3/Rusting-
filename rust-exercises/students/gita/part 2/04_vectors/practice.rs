@@ -28,3 +28,13 @@ fn accessing_elements() {
         None=>println!("There is no third element"),
     }
 }
+
+fn mutable_borrow(){
+    let mut v=vec![1, 2, 3, 4, 5];
+    let first=&v[0]; //Immutable borrow of the vector
+    v.push(6); //Error, can mutably borrow while immutably borrowed
+    println!("The first element is: {}", first);
+    // now first is no longer in use, so we can modify it
+    v.push(6);
+    println!("{:?}", v);
+}
