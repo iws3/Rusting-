@@ -76,7 +76,83 @@ impl BankAccount {
 
 // Exercise 2
 fn exercise_2() {
-    // Your solution here
+    let vector: Vector2D = Vector2D::new(3.0, 4.0);
+    let vector1: Vector2D = Vector2D::new(5.0, 8.0);
+    println!("\nVectorA: {:?}", vector);
+    println!("VectorB: {:?}", vector1);
+
+    println!("\nVectorA magnitude: {}", vector.magnitude());
+    print!("\nVectorA + VectorB: ");
+    vector.add(&vector1).print();
+
+    print!("\nVectorA - VectorB: ");
+    vector.subtract(&vector1).print();
+
+    println!("\nVectorA dot VectorB: {}", vector.dot_product(&vector1));
+
+    print!("\nScale VectorA by 5: ");
+    vector.scale(5.0).print();
+
+    print!("\nNormalized VectorA: ");
+    vector.normalize().print();
+
+}
+
+#[derive(Debug)]
+struct Vector2D {
+    x: f64,
+    y: f64,
+}
+
+impl Vector2D {
+    fn new(x: f64, y: f64) -> Self {
+        Self {
+            x,
+            y
+        }
+    }
+
+    fn magnitude(&self) -> f64 {
+        f64::sqrt(self.x * self.x + self.y * self.y)
+    }
+
+    fn add(&self, other: &Vector2D) -> Vector2D {
+        Vector2D {
+            x: self.x + other.x,
+            y: self.y + other.y
+        }
+    }
+
+    fn subtract(&self, other: &Vector2D) -> Vector2D {
+        Vector2D {
+            x: self.x - other.x,
+            y: self.y - other.y
+        }
+    }
+
+    fn dot_product(&self, other: &Vector2D) -> f64 {
+        self.x * other.x + self.y * other.y
+
+    } 
+
+    fn scale(&self, factor: f64) -> Vector2D {
+        Vector2D {
+            x: self.x * factor,
+            y: self.y * factor
+        }
+    }
+
+    fn normalize(&self) -> Vector2D {
+        Vector2D {
+            x: self.x / self.magnitude(),
+            y: self.y / self.magnitude()
+        }
+    }
+
+    fn print(&self) {
+        println!("{:?}", self);
+    }
+
 }
 
 // Exercise 3
@@ -85,7 +161,7 @@ fn exercise_3() {
 }
 
 fn main() {
-    exercise_1();
+    //exercise_1();
     exercise_2();
     exercise_3();
 }
