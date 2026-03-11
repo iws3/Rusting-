@@ -157,11 +157,117 @@ impl Vector2D {
 
 // Exercise 3
 fn exercise_3() {
-    // Your solution here
+    let query1 = QueryBuilder::new("users")
+        .select("name")
+        .select("email")
+        .where_clause("age > 18")
+        .order("name")
+        .limit(10)
+        .build();
+
+    let query2 = QueryBuilder::new("students")
+        .select("name")
+        .where_clause("age > 18")
+        .where_clause("average < 10")
+        .order("name")
+        .build();
+
+    let query3 = QueryBuilder::new("vehicle")
+        .select("name")
+        .select("brand")
+        .select("version")
+        .where_clause("price > $40_000")
+        .limit(7)
+        .build();
+
+    println!("{}", query1);  
+    println!("{}", query2);  
+    println!("{}", query3);  
+
+
+}
+
+struct QueryBuilder {
+    table: String,
+    conditions: Vec<String>,
+    columns: Vec<String>,
+    limit: Option<u32>,
+    order_by: Option<String>,
+}
+
+impl QueryBuilder {
+    fn new(table: &str) -> QueryBuilder {
+        QueryBuilder {
+            table: table.to_string(),
+            conditions: Vec::new(),
+            columns: Vec::new(),
+            limit: None,
+            order_by: None
+        }
+    }
+
+    fn select(mut self, column: &str) -> QueryBuilder {
+        self.columns.push(column.to_string());
+        self
+    }
+
+    fn where_clause(mut self, condition: &str) -> QueryBuilder {
+        self.conditions.push(condition.to_string());
+        self
+    }
+
+    fn limit(mut self, n: u32) -> QueryBuilder {
+        self.limit = Some(n);
+        self
+    }
+
+    fn order(mut self, column: &str) -> QueryBuilder {
+        self.order_by = Some(column.to_string());
+        self
+    }
+
+    fn build(self) -> String {
+        let mut query = String::from("SELECT ");
+        for i in 0..self.columns.len() {
+            if i == self.columns.len() - 1 {
+                query.push_str(&self.columns[i]);
+            } else {
+                query.push_str(&self.columns[i]);
+                query.push_str(", ")
+            }
+        }
+
+        query.push_str(" FROM ");
+        query.push_str(&self.table);
+        query.push_str(" WHERE ");
+
+        for i in 0..self.conditions.len() {
+            if i == self.conditions.len() - 1 {
+                query.push_str(&self.conditions[i]);
+            } else {
+                query.push_str(&self.conditions[i]);
+                query.push_str(" && ");
+            }
+        }
+
+        query.push_str(" ORDER BY ");
+
+        if let Some(value) = self.order_by {
+            query.push_str(&value);
+        }
+
+        query.push_str(" LIMIT ");
+
+        if let Some(value) = self.limit {
+            query.push_str(&value.to_string());
+        }
+        
+        query
+    }
 }
 
 fn main() {
     //exercise_1();
-    exercise_2();
+    //exercise_2();
     exercise_3();
 }
