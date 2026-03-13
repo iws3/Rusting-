@@ -4,6 +4,8 @@
 // Date: 2026-02-03
 // ============================================
 
+#![allow(unused)]
+
 // Exercise 1
 fn exercise_1() {
     let mut v: Vec<u32> = Vec::new();
@@ -105,11 +107,102 @@ fn calculate_stats(numbers: &Vec<i32>) {
 
 // Exercise 3
 fn exercise_3() {
-    // Your solution here
+    
+    let student1 = Student {
+        name: String::from("Alice"),
+        grades: vec![
+            72.0, 88.5, 91.0, 65.0, 77.5,
+            83.0, 94.0, 69.5, 58.0, 86.0
+        ],
+    };
+
+    let student2 = Student {
+        name: String::from("Brian"),
+        grades: vec![
+            45.0, 67.5, 73.0, 81.5, 90.0,
+            54.0, 62.5, 79.0, 88.0, 70.5
+        ],
+    };
+
+    let student3 = Student {
+        name: String::from("Clara"),
+        grades: vec![
+            92.0, 84.5, 76.0, 88.0, 95.5,
+            67.0, 73.5, 81.0, 59.0, 90.0
+        ],
+    };
+
+	print_report(&student1);
+	print_report(&student2);
+	print_report(&student3);
 }
+
+#[derive(Debug)]
+struct Student {
+    name: String,
+    grades: Vec<f64>,
+}
+
+fn new_student(name: &str) -> Student {
+	Student {
+		name: name.to_string(),
+		grades: Vec::new()
+	}
+}
+
+fn add_grade(student: &mut Student, grade: f64) {
+	student.grades.push(grade);
+	println!("Grade added");
+}
+
+fn average_grade(student: &Student) -> f64 {
+	let grades = &student.grades;
+	if grades.len() == 0 {
+		return 0.0;
+	}
+	let mut sum = 0.0;
+	for i in grades {
+		sum += i;
+	}
+	sum / grades.len() as f64
+}
+
+fn highest_grade(student: &Student) -> f64 {
+	let grades = &student.grades;
+	let mut highest = grades[0];
+	for i in 1..grades.len() {
+		if grades[i] > highest {
+			highest = grades[i];
+		}
+	}
+	highest
+}
+
+fn letter_grade(student: &Student) -> &str {
+	let average = average_grade(student);
+	let mut grade = "";
+	if average > 89.0 {
+		grade = "A";
+	} else if average > 79.0 {
+		grade = "B";
+	} else if average > 69.0 {
+		grade = "C";
+	} else {
+		grade = "F";
+	}
+	grade
+}
+
+fn print_report(student: &Student) {
+	println!("\n{}'s report\n", student.name);
+	println!("Marks: {:?}", student.grades);
+	println!("Average: {}", average_grade(student));
+	println!("Grade: {}", letter_grade(student));
+}
+
 
 fn main() {
    // exercise_1();
-    exercise_2();
+    //exercise_2();
     exercise_3();
 }
