@@ -70,6 +70,7 @@ fn main() {
     // println!("User1 email: {}", user1.email); // This will cause an error because user1's email has been moved to user2 -wont compile
 
 // But if wse only  copy the Copy fields:
+// If any non-Copy field is moved, the original struct can no longer be used. In this case, since email and username are of type String (which does not implement the Copy trait), they are moved to user2, making user1 unusable after the struct update syntax is applied. However, active and sign_in_count are of types bool and u64 respectively, which do implement the Copy trait, so they are copied to user2 without affecting user1's usability.
 let user3=User {
     email:String::from("anothergita@gmail.com"),
     username:String::from("gita34"),
