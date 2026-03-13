@@ -1,3 +1,4 @@
+
 // // Define structs
 // struct User {
 //     username: String,
