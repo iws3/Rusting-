@@ -79,3 +79,13 @@ let user3=User {
 println!("User2 email: {}", user2.email);
 
 }
+
+
+fn structs_without_name_fields () {
+    struct Color(i32, i32, i32);
+    struct Point(i32, i32, i32);
+    let black=Color(0,0,0);
+    let origin=Point(0,0,0);
+    println!("Black color: ({}, {}, {}", black.0, black.1, black.2)
+
+}
