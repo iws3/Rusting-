@@ -47,6 +47,7 @@
 // creating instances from other instances
 
 fn main() {
+    structs_without_name_fields();
     struct User {
         username: String,
         email: String,
@@ -86,6 +87,6 @@ fn structs_without_name_fields () {
     struct Point(i32, i32, i32);
     let black=Color(0,0,0);
     let origin=Point(0,0,0);
-    println!("Black color: ({}, {}, {}", black.0, black.1, black.2)
+    println!("Black color: ({}, {}, {})", black.0, black.1, black.2)
 
 }
