@@ -1,11 +1,48 @@
 // ============================================
 // Student: mntengkeh
-// Topic: Strings (Part 2, Day 11)
-// Date: 2026-03-01
-// ============================================
+
+// Topic: Strings (Part 1, Day 10)
+// Date: 2026-02-28
+
 
 // Exercise 1
 fn exercise_1() {
+
+	let s: &str = "hello";
+	let s1: String = String::from(s);
+	let s2: String = s.to_string();
+	let s3: &str = &s2[..];
+
+	println!("{}", first_word("hello world"));
+	println!("{}", first_word("rust"));
+	println!("{}", first_word("  leading space"));
+
+	accepts_both(s);
+	accepts_both(&s1);
+}
+
+fn first_word(s: &str) -> &str {
+	s.trim().split(' ').next().unwrap()
+}
+
+fn accepts_both(s: &str) {
+	println!("{}", s);
+}
+
+// Exercise 2
+fn exercise_2() {
+    // Your solution here
+}
+
+// Exercise 3
+fn exercise_3() {
+    // Your solution here
+}
+
+fn main() {
+    exercise_1();
+    exercise_2();
+=======
     // Your solution here
 }
 
@@ -28,6 +65,7 @@ fn exercise_2() {
 			for c in word.as_bytes() {
 				if *c == b'o'{
 					o_count += 1;
+					break;
 				}
 			}
 			println!("{}. {}", i, word);
@@ -44,11 +82,37 @@ fn exercise_2() {
 }
 // Exercise 3
 fn exercise_3() {
-    // Your solution here
+    let multilingual = String::from("Hello Привет 你好 🌍");
+		println!("String: {}", multilingual);
+		// the values printed below are different because a single character in rust is represented 
+		// using 4 bytes as opposed to one in other languages. 
+		// characters i rust use between 1 and 4 bytes inclusive when collected in a string
+		println!("Number of bytes: {}", multilingual.len());
+		println!("Number of unicode characters: {}", multilingual.chars().count());
+
+		for (i, data) in multilingual.chars().enumerate() {
+			println!("{}. {}", i, data);
+		}
+
+		// won't work
+		//let c = multilingual[0];
+
+		let first = multilingual.chars().next();
+		println!("First character: {}", first.unwrap());
+
+		let mut ascii_string = String::new();
+		for c in multilingual.chars() {
+			if c.is_ascii() {
+				ascii_string.push(c);
+			}
+		}
+
+		println!("String with only ascii characters: {}", ascii_string);
+
 }
 
 fn main() {
    // exercise_1();
-    exercise_2();
-    //exercise_3();
+    //exercise_2();
+    exercise_3();
 }
