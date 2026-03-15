@@ -1,0 +1,29 @@
+// understanding enums in rust
+// ENUMS are one of Rust's most powerful features. They let you define a type that can be one of several variants. Each variant can have data associated with it. This is similar to "union types" in other languages, but with more safety and expressiveness.
+
+// enum IpAddrKind {
+//     V4,
+//     V5,
+// }
+
+// fn main(){
+//     let four=IpAddrKind::V4;
+//     let siix=IpAddrKind::V6;
+//     route(IpAddrKind::V4);
+//     route(IpAddrKind::V6);
+// }
+
+// fn route(ip_kind:IpAddrKind) {
+
+// }
+// eNUMS CAN BE MUCH MORE POWERFUL. EACH VARIANT CAN HAVE ASSOCIATED DATA
+enum IpAddr {
+    V4(u8, u8, u8, u8),
+    V6(String),
+}
+
+
+fn main(){
+    let home=IpAddr::V4(127,168, 0,1);
+    let loopback=IpAddr::V6(String::from("::1"));
+}
