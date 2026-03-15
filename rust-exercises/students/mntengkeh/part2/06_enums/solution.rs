@@ -70,7 +70,48 @@ fn describe(shape: &Shape) -> String {
 
 // Exercise 2
 fn exercise_2() {
-    // Your solution here
+    let res1 = safe_divide(3.0, 4.0);
+    print_result(res1);
+    let res2 = safe_divide(3.0, 0.0);
+    print_result(res2);
+    let res3 = safe_sqrt(3.0);
+    print_result(res3);
+    let res4 = safe_sqrt(-4.0);
+    print_result(res4);
+}
+
+enum MathResult {
+    Success(f64),
+    DivisionByZero,
+    NegativeSquareRoot(f64),
+    Overflow,
+}
+
+fn safe_divide(a: f64, b: f64) -> MathResult {
+    if b == 0.0 {
+        return MathResult::DivisionByZero;
+    }
+    MathResult::Success(a / b)
+}
+
+fn safe_sqrt(n: f64) -> MathResult {
+    if n < 0.0 {
+        return MathResult::NegativeSquareRoot(n);
+    }
+    MathResult::Success(n.sqrt())
+}
+
+// fn safe_power(base: f64, exp: u32) -> MathResult {
+
+// }
+
+fn print_result(result: MathResult) {
+    match result {
+        MathResult::Success(a) => println!("Operation successful. Result: {}", a),
+        MathResult::DivisionByZero => println!("Operation failed! Division by zero error"),
+        MathResult::NegativeSquareRoot(a) => println!("Can't find the square root of a negative numeer: {}", a),
+        MathResult::Overflow => todo!()
+    }
 }
 
 // Exercise 3
@@ -79,7 +120,7 @@ fn exercise_3() {
 }
 
 fn main() {
-    exercise_1();
+    //exercise_1();
     exercise_2();
     exercise_3();
 }
