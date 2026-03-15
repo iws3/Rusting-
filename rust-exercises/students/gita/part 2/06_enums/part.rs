@@ -27,3 +27,11 @@ fn main(){
     let home=IpAddr::V4(127,168, 0,1);
     let loopback=IpAddr::V6(String::from("::1"));
 }
+
+// Multiple values inside an enum variant can be named using struct-like syntax
+enum Message {
+    Quit,          //No data
+    Move {x:i32, y:i32}, //anonymous struct
+    Write(String),   //A string
+    ChangeColor(i32, i32, i32), //Three i32s 
+}
