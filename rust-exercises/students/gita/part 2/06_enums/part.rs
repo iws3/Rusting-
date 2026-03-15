@@ -17,18 +17,19 @@
 
 // }
 // eNUMS CAN BE MUCH MORE POWERFUL. EACH VARIANT CAN HAVE ASSOCIATED DATA
-enum IpAddr {
-    V4(u8, u8, u8, u8),
-    V6(String),
-}
+// enum IpAddr {
+//     V4(u8, u8, u8, u8),
+//     V6(String),
+// }
 
 
-fn main(){
-    let home=IpAddr::V4(127,168, 0,1);
-    let loopback=IpAddr::V6(String::from("::1"));
-}
+// fn main(){
+//     let home=IpAddr::V4(127,168, 0,1);
+//     let loopback=IpAddr::V6(String::from("::1"));
+// }
 
 // Multiple values inside an enum variant can be named using struct-like syntax
+#[derive(Debug)]
 enum Message {
     Quit,          //No data
     Move {x:i32, y:i32}, //anonymous struct
@@ -44,13 +45,13 @@ impl Message {
 }
 
 fn main() {
-  let msg1=Messege::Quit;
+//   let msg1=Messege::Quit;
   let msg2=Message::Move {x:10, y:20};
   let msg3=Message::Write(String::from("Hello,  world"));
   let msg4=Message::ChangeColor(244, 0, 0);
 
 //   call the methods on each message
-    msg1.call();
+    // msg1.call();
     msg2.call();
     msg3.call();
     msg4.call();
