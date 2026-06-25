@@ -758,3 +758,18 @@
 //     // why will you not print the array?
 
 // }
+
+fn main() {
+    // Controlm flows
+    let number:i32=5;
+    if number < 10 {
+        println!("First condition was true");
+    }
+    else if number < 22 {
+        println!("Second condition was true");
+    }
+
+    else {
+        println!("Condition was false");
+    }
+}
