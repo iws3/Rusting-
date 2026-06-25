@@ -716,6 +716,12 @@ fn exercise_1() {
     let z:i32=z+1;
     const SUB_COUNT:u32=100000;
     // println!(SUB_COUNT);
+
+    // RUST HAS 4 SCALAR DATATYES: 
+    // INteger, floating point, booleanb, character
+    // 8bits/16bits/64bits/128/arc
+
+    
 }
 
 fn main() {
