@@ -5,13 +5,10 @@
 // // //     y=10;
 // // //     println!("The value of y is now: {}", y)
 
-
 // // // }
 // // // QUESTION 1:
 // // // EXPLAIN DIFFERENCES BETWEEN SHADOWING AND MUTATION IN RUST
 // // // when should we use shadowing vs mutations
-
-
 
 // // // Each let creates a new variable that shadows the previous one. This is different from mutation because each x is actually a separate variable. You can even change the type when shadowing:
 
@@ -31,16 +28,14 @@
 // // //     println!("Number of spaces: {}", spaces);
 // // // }
 
-
 // // // Try doing that with mutation and it won't work:
 // // // fn main() {
 // // //     let mut spaces="  ";
 // // //     spaces=spaces.len();
 // // // }
 
-
 // // // Data Types:
-// // // 1. Integers 
+// // // 1. Integers
 // // // i for sign and u for unsigned
 // // // understanding i32
 
@@ -61,7 +56,6 @@
 
 // // // }
 // // // explain swc: in nexjs , programming and what is it
-
 
 // // // floats
 // // // fn main(){
@@ -85,11 +79,9 @@
 
 // // // Character : Unicodes all the way
 
-
 // // // COMPOUND TYPES
 // // // 1. Turples: Fixed size heterogeneous Collection
 // // // A turple group together values of different types into one compound type with fixed length:
-
 
 // // // fn main() {
 // // //     let person:(String, i32, f64)=(String::from("Alice"), 30, 5.6);
@@ -102,21 +94,15 @@
 // // //     // let unit_value:()=();
 // // // }
 
-
-
-
 // // // Control Flow: Conditionals and Loops
 
 // // // Now let's talk about controlling the flow of your program's execution.
 // // // If Expressions: Making Decisions
 // // // In Rust, if statements are actually expressions, meaning they return values:
 
-
-
-
 // // // fn main() {
 // // //     let number = 7;
-    
+
 // // //     // Standard if statement
 // // //     if number < 5 {
 // // //         println!("number is less than 5");
@@ -125,50 +111,41 @@
 // // //     } else {
 // // //         println!("number is greater than 5");
 // // //     }
-    
+
 // // //     // if as an expression—assigning its result
 // // //     let description = if number % 2 == 0 {
 // // //         "even"  // Note: no semicolon! This is the return value
 // // //     } else {
 // // //         "odd"
 // // //     };
-    
+
 // // //     println!("The number is {}", description);
-    
+
 // // //     // Both branches must return the same type
 // // //     // This won't compile:
 // // //     // let bad = if number > 5 { 10 } else { "ten" };
 // // // }
 
-
-
-
 // // // Note that conditions must always be booleans. Unlike JavaScript or Python, Rust won't automatically convert other values to booleans:
-
 
 // // // fn main() {
 // // //     let number = 3;
-    
+
 // // //     // This won't work:
 // // //     // if number { println!("number is truthy"); }
-    
+
 // // //     // You must be explicit:
 // // //     if number != 0 {
 // // //         println!("number is not zero");
 // // //     }
 // // // }
 
-
 // // // This might feel verbose, but it prevents a whole class of bugs where you accidentally use a value as a boolean.
-
-
-
 
 // // // 5. Loops: Repetition Three Ways
 
 // // // Rust gives you three looping constructs, each with specific use cases.
 // // // 5.1 The infinite loop:
-
 
 // // // fn main() {
 // // //     let mut counter=0;
@@ -222,9 +199,7 @@
 
 // // //  The for loop is your go-to for iterating over collections. The .iter() method creates an iterator over the array, and .enumerate() gives you both the index and value.
 
-
-
-// // i am from the js, python world and i want to get into rust programming language on my windows 11 pc. i want you to break down this into 3 part series, first part will be intro and rust basics, second will be intermediate, and last is advance, i am new to rust, i want you to first of all start from why rust, fiedls in which rust code can excel,, why rust was created, who created it and now start with the first part for now where you go detaily onto setup, variables, data types, loops, conditionals and functions__ break this concept down and note and a computer science student so as much as you are simplifying thingd try to break down stuffs from first pronciples eg about int32 explain it detaily what it means, 
+// // i am from the js, python world and i want to get into rust programming language on my windows 11 pc. i want you to break down this into 3 part series, first part will be intro and rust basics, second will be intermediate, and last is advance, i am new to rust, i want you to first of all start from why rust, fiedls in which rust code can excel,, why rust was created, who created it and now start with the first part for now where you go detaily onto setup, variables, data types, loops, conditionals and functions__ break this concept down and note and a computer science student so as much as you are simplifying thingd try to break down stuffs from first pronciples eg about int32 explain it detaily what it means,
 
 // // you are going to break doen this things to me like andrej karpathy
 
@@ -284,7 +259,7 @@
 // // fn main() {
 // //     let x = 5;  // x is now bound to the value 5
 // //     println!("The value of x is: {}", x);
-    
+
 // //     x = 10;  // This will cause a compile error!
 // //     println!("The value of x is: {}", x);
 // // }
@@ -296,7 +271,7 @@
 // // fn main() {
 // //     let mut y = 5;  // The 'mut' keyword makes this mutable
 // //     println!("The value of y is: {}", y);
-    
+
 // //     y = 10;  // Now this is fine
 // //     println!("The value of y is now: {}", y);
 // // }
@@ -349,17 +324,17 @@
 // //     let normal: i32 = -2_000_000; // 32 bits: about -2 billion to +2 billion
 // //     let big: i64 = -9_000_000_000; // 64 bits: huge range
 // //     let huge: i128 = 170_000_000_000_000_000_000; // 128 bits: astronomical
-    
+
 // //     // Unsigned versions (no negatives, so range shifts up)
 // //     let u_tiny: u8 = 255;       // 0 to 255
 // //     let u_small: u16 = 65_535;  // 0 to 65,535
 // //     let u_normal: u32 = 4_000_000; // 0 to about 4 billion
 // //     let u_big: u64 = 18_000_000_000; // 0 to huge
-    
+
 // //     // Special types
 // //     let pointer_sized: isize = 100; // Size matches your CPU architecture
 // //     let u_pointer_sized: usize = 100; // Used for indexing collections
-    
+
 // //     println!("All these numbers live in different amounts of memory!");
 // // }
 // // Notice I wrote numbers like 32_768 with underscores? Rust lets you do this for readability, and it ignores the underscores completely.
@@ -373,9 +348,9 @@
 // // fn main() {
 // //     let small_decimal: f32 = 3.14159; // 32 bits, single precision
 // //     let precise_decimal: f64 = 3.14159265358979; // 64 bits, double precision (default)
-    
+
 // //     let pi = 2.5; // When you don't specify, Rust assumes f64
-    
+
 // //     println!("f32 is less precise: {}", small_decimal);
 // //     println!("f64 gives you more decimal places: {}", precise_decimal);
 // // }
@@ -388,7 +363,7 @@
 // // fn main() {
 // //     let is_rust_awesome: bool = true;
 // //     let is_this_javascript: bool = false;
-    
+
 // //     // Despite only needing 1 bit, a bool takes 1 byte in memory
 // //     // This is for efficiency—modern CPUs work with bytes, not bits
 // //     println!("Rust is awesome: {}", is_rust_awesome);
@@ -401,7 +376,7 @@
 // //     let letter: char = 'z';
 // //     let emoji: char = '😊';
 // //     let chinese: char = '中';
-    
+
 // //     // All of these are valid chars and each takes 4 bytes
 // //     println!("{}, {}, {}", letter, emoji, chinese);
 // // }
@@ -417,18 +392,18 @@
 // // fn main() {
 // //     // Tuple holding different types
 // //     let person: (String, i32, f64) = (String::from("Alice"), 30, 5.6);
-    
+
 // //     // Accessing tuple elements with dot notation
 // //     let name = &person.0;    // First element (String)
 // //     let age = person.1;      // Second element (i32)
 // //     let height = person.2;   // Third element (f64)
-    
+
 // //     println!("{} is {} years old and {} feet tall", name, age, height);
-    
+
 // //     // Destructuring a tuple
 // //     let (person_name, person_age, person_height) = person;
 // //     println!("Destructured: {}, {}, {}", person_name, person_age, person_height);
-    
+
 // //     // The unit type—an empty tuple
 // //     let unit_value: () = ();
 // //     // Functions that don't return anything actually return ()
@@ -442,20 +417,20 @@
 // // fn main() {
 // //     // Array of 5 integers, all on the stack
 // //     let numbers: [i32; 5] = [1, 2, 3, 4, 5];
-    
+
 // //     // Accessing elements
 // //     let first = numbers[0];
 // //     let second = numbers[1];
-    
+
 // //     println!("First: {}, Second: {}", first, second);
-    
+
 // //     // Create an array with 10 zeros
 // //     let zeros = [0; 10]; // Shorthand for [0,0,0,0,0,0,0,0,0,0]
-    
+
 // //     // Get the length
 // //     let length = numbers.len();
 // //     println!("Array has {} elements", length);
-    
+
 // //     // This will panic at runtime if index is out of bounds
 // //     // let invalid = numbers[10]; // Don't do this!
 // // }
@@ -470,7 +445,7 @@
 // // rust
 // // fn main() {
 // //     let number = 7;
-    
+
 // //     // Standard if statement
 // //     if number < 5 {
 // //         println!("number is less than 5");
@@ -479,16 +454,16 @@
 // //     } else {
 // //         println!("number is greater than 5");
 // //     }
-    
+
 // //     // if as an expression—assigning its result
 // //     let description = if number % 2 == 0 {
 // //         "even"  // Note: no semicolon! This is the return value
 // //     } else {
 // //         "odd"
 // //     };
-    
+
 // //     println!("The number is {}", description);
-    
+
 // //     // Both branches must return the same type
 // //     // This won't compile:
 // //     // let bad = if number > 5 { 10 } else { "ten" };
@@ -498,10 +473,10 @@
 // // rust
 // // fn main() {
 // //     let number = 3;
-    
+
 // //     // This won't work:
 // //     // if number { println!("number is truthy"); }
-    
+
 // //     // You must be explicit:
 // //     if number != 0 {
 // //         println!("number is not zero");
@@ -517,16 +492,16 @@
 // // rust
 // // fn main() {
 // //     let mut counter = 0;
-    
+
 // //     // loop runs forever until you break out
 // //     let result = loop {
 // //         counter += 1;
-        
+
 // //         if counter == 10 {
 // //             break counter * 2; // break can return a value!
 // //         }
 // //     };
-    
+
 // //     println!("The result is {}", result); // Prints 20
 // // }
 // // Notice that break can return a value, making the loop an expression. This is useful when you're searching for something and want to return what you found.
@@ -536,12 +511,12 @@
 // // rust
 // // fn main() {
 // //     let mut number = 3;
-    
+
 // //     while number != 0 {
 // //         println!("{}!", number);
 // //         number -= 1;
 // //     }
-    
+
 // //     println!("LIFTOFF!");
 // // }
 // // Use while when you have a condition to check but don't know in advance how many iterations you'll need.
@@ -554,19 +529,19 @@
 // //     for number in 1..6 {  // 1..6 means 1,2,3,4,5 (excludes 6)
 // //         println!("Number: {}", number);
 // //     }
-    
+
 // //     // Inclusive range
 // //     for number in 1..=5 {  // 1..=5 means 1,2,3,4,5 (includes 5)
 // //         println!("Number: {}", number);
 // //     }
-    
+
 // //     // Looping through an array
 // //     let animals = ["cat", "dog", "bird", "fish"];
-    
+
 // //     for animal in animals.iter() {
 // //         println!("I like {}s", animal);
 // //     }
-    
+
 // //     // With index and value
 // //     for (index, value) in animals.iter().enumerate() {
 // //         println!("Animal {} is a {}", index, value);
@@ -575,7 +550,6 @@
 // // The for loop is your go-to for iterating over collections. The .iter() method creates an iterator over the array, and .enumerate() gives you both the index and value.
 
 // // Functions: Building Blocks of Abstraction
-
 
 // fn say_hello(){
 //     println!("Hello Rust!");
@@ -606,7 +580,6 @@
 //     // this is returned from the function
 // }
 
-
 // // fn main(){
 // //     say_hello();
 // //     greet_person("jude", 23);
@@ -616,15 +589,9 @@
 // //     let result=complex_function(3);
 // //     println!("complex_function(3) = {}", result);
 
-
 // // }
 
-
-
 // // Here's the crucial concept: Rust distinguishes between statements and expressions. An expression evaluates to a value. A statement performs an action but doesn't return a value. In the function above, x + y is an expression (no semicolon), so its value gets returned. If you added a semicolon (x + y;), it would become a statement and return nothing (actually the unit type ()), causing a compile error because the function signature promises to return an i32.
-
-
-
 
 // fn main() {
 //     let s1=String::from("hello");
@@ -634,9 +601,8 @@
 //     // above won't compile ! s1 no longer iwns data
 //     println!("{}", s2);
 //     // This works fine because s2 is the owner
-// } 
+// }
 // // s2 goes out of scope here, as teh string data is automatically freed
-
 
 // // FUNCTIONS and Ownership: Passing Values
 // // Ownership rules apply to functions calls too. whhen you pass a value to a function, ownership transfer to that function
@@ -658,15 +624,13 @@
 //     println!("{}", name_string);
 // }
 
-
 // fn makes_copy(some_integer:i32){
-//   println!("{}", some_integer);  
+//   println!("{}", some_integer);
 // }
 
 // // Notice what happens. When we call takes_ownership with s, the String data moves into the function parameter. After that call, s is no longer valid in main. When the function returns, some_string goes out of scope and the String data is automatically freed. This is ownership rule three in action.
 // // For the integer, because i32 implements Copy, the value is copied into the function. The original x remains valid in main.
 // // If you want to get ownership back from a function, you can return the value:
-
 
 // // IF YOU WANT TO GET OWNERSHIP BACK FROM A FUNCTION YOU CSN RETURN THE VALUE
 
@@ -676,7 +640,6 @@
 //     // RETURN ownership of the string to the caller
 // }
 
-
 // fn main(){
 //     let s1=String::from("hello");
 //     let s2=takes_and_returns(s);
@@ -684,18 +647,12 @@
 //     println!("{}", s2);
 // }
 
-
-// // References and Borrowing: 
-
-
-
+// // References and Borrowing:
 
 // // fn transfer_ownership(a:String)->String{
 // //     print("a string: {}", a_string)
 
 // // }
-
-
 
 // // Borrowing is Rust's way of letting you use a value without taking ownership of it. You create a reference to a value, which is like a pointer in C but with strict compile-time guarantees about safety.
 
@@ -704,7 +661,7 @@
 //     let len=calculate_length(&s1); //s1 creates a reference to s1
 
 //     print("The length of '{}'", sq1, len); //s1 is still valid
-    
+
 // }
 
 // fn calculate_length(s:&string)->usize {
@@ -714,10 +671,6 @@
 
 // // The ampersand creates a reference. When we write &s1, we're creating a reference to s1's data without taking ownership. The function parameter s: &String means "s is a reference to a String." Inside the function, we can use the reference to access the data, but when the function ends, the reference goes away without affecting the original data.
 // // This is called borrowing because you're borrowing the value—you get to use it temporarily, but you don't own it and you have to give it back. The actual owner, s1, remains the owner throughout.
-
-
-
-
 
 // // Mutable References: Borrowing with Permission to Modify
 
@@ -730,28 +683,41 @@
 //     println!("{}", s); //print hello world
 // }
 
-
-
-
 // fn change(some_string:&mut string) {
 //     name_string.push_str(", world");
 // }
 
-
 fn exercise_1() {
-    let mut x = 10;
-    x = 20;
-    println!("x is {}", x);
+    // let mut x = 10;
+    // x = 20;
+    // println!("x is {}", x);
 
-    let mut greeting = "hello";
-    greeting = "goodbye";
-    println!("{}", greeting);
+    // let mut greeting = "hello";
+    // greeting = "goodbye";
+    // println!("{}", greeting);
 
-    let max_score = 100;
-    println!("Max score is {}", max_score);
+    // let max_score = 100;
+    // println!("Max score is {}", max_score);
+    // variables rewind
+    let mut x: i32 = 5;
+    let y = 34;
+    println!("The value of y before updating it: {}", y);
+    y = 45;
+    println!("The value of y after updating it: {}", y);
+    println!("The value of x is: {}", x);
+    x = 6;
+    println!("The value of x is: {}", x);
+    // we can set x to a return value of a function but not const
+    // differmetiate between const vs let
+    // we cannot use mut in const.. when we are sure variable is not going to change
+
+    // shadowing hel us to preserve mutabilityty
+    let z:i32=6;
+    let z:i32=z+1;
+    const SUB_COUNT:u32=100000;
+    // println!(SUB_COUNT);
 }
 
-
-fn main(){
+fn main() {
     exercise_1()
 }
