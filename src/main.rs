@@ -759,17 +759,36 @@
 
 // }
 
-fn main() {
-    // Controlm flows
-    let number:i32=5;
-    if number < 10 {
-        println!("First condition was true");
-    }
-    else if number < 22 {
-        println!("Second condition was true");
-    }
+// fn main() {
+//     // Controlm flows
+//     // in rust. conditon must be a boolean, eg if number {} --> is going to be false
+//     let number:i32=5;
+//     if number < 10 {
+//         println!("First condition was true");
+//     }
+//     else if number < 22 {
+//         println!("Second condition was true");
+//     }
 
-    else {
-        println!("Condition was false");
-    }
+//     else {
+//         println!("Condition was false");
+//     }
+// }
+
+// execute until we call break
+
+fn main(){
+    let mut counter:i32=0;
+    let results=loop {
+        counter+=1;
+        println!("Running forever....");
+        if counter==10 {
+        break counter;
+        
+        }
+        // break
+        // adding break counter : will make this loop return counter
+        // we can return values from this type of blocks, and if we dont add break, it runs forever
+    };
+    println!("The result is: {}", results);
 }
