@@ -736,16 +736,25 @@
 
 
 // Loops in rust
-fn main(){
-    let a: [i32; _]=[10, 20, 30, 50];
-    // println!("The list is: {}", a);
-    for element in a.iter() {
-        println!("The value is: {}", element);
-    }
+// fn main(){
+//     let a: [i32; _]=[10, 20, 30, 50];
+//     // println!("The list is: {}", a);
+//     for element in a.iter() {
+//         println!("The value is: {}", element);
+//     }
     
 
-    // seconnd for loop
-    for number in 1..4 {
-        println!("{}!", number)
-    }
-}
+//     // seconnd for loop
+//     for number in 1..4 {
+//         println!("{}!", number)
+//     }
+// }
+
+
+// fn main() {
+//     // erarys are static: ccreaqte an array with 8 values all set to 0's
+//     let byte: [i32; _]=[1, 3,4,5];
+//     let byte2:[i32; _]=[0; 8];
+//     // why will you not print the array?
+
+// }
