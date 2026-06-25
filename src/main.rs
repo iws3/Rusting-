@@ -721,7 +721,12 @@ fn exercise_1() {
     // INteger, floating point, booleanb, character
     // 8bits/16bits/64bits/128/arc
 
-    
+    // COMPOUND TYPES
+    let tup: (&str, i32)=("Let's Get Rusty!",100);
+    // let (channel:&str, sub:i32)=tup
+    let sub_count:i32=tup.1;
+
+
 }
 
 fn main() {
