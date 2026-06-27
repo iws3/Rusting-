@@ -796,8 +796,32 @@
 
 // ownership=> memory safety guarantee without using garabge collection
 
+// fn main(){
+//     let s1=String::from("hello");
+//     let s2=s1;
+//     println!("{}", s1);
+// }
+
+// understanding stacks/heaps
+// fn main(){
+//     fn a(){
+//         // &str-> string literal is stored in the binary and we store the reference in the stack
+//         let x:&str="hello";
+//         let y:i32=32;
+//         b()
+//     } 
+
+//     fn b(){
+//         // stored in the heap and then store the pointer in the stack. pushing to stack is faster thatn allocated to the heap, necuase the heap spend time looking where to allocated 
+//         let s=String::from("world")
+//     }
+// }
+
+
+// ownership rows in Rust
+
 fn main(){
-    let s1=String::from("hello");
-    let s2=s1;
-    println!("{}", s1);
+    // 1. Each value in rust has a variable that is called its owner
+    // 2. There can only be one owner at a time
+    // 3.when the owner goe out of scope the owner will be dropped and the value freed
 }
