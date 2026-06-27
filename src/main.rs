@@ -820,8 +820,35 @@
 
 // ownership rows in Rust
 
+// fn main(){
+//     // 1. Each value in rust has a variable that is called its owner
+//     // 2. There can only be one owner at a time
+//     // 3.when the owner goe out of scope the owner will be dropped and the value freed:
+//     // eg.
+//     { // s is not valid here
+//     let s:&str="hello";
+// // do something  with s, 
+// // string literals are stored in binmary and are fixed and cannot be mutated
+//     } // scope is now over, and s is no longer valid
+
+//     // string type is stored in the heap and can muted
+//     // let s=String::from("world")
+
+
+// }
+
+
 fn main(){
-    // 1. Each value in rust has a variable that is called its owner
-    // 2. There can only be one owner at a time
-    // 3.when the owner goe out of scope the owner will be dropped and the value freed
+    let x:i32=5;
+    let y:i32=x; //copy ... possible because they are fixed and stored in the stack and uses less memory
+
+    // but dealing with string types is not possible nbecause they are stored in the heap
+
+    let s1=String::from("hello");
+    let s2=s1; // this is a move and when this happens the value of s1 is completely moved to s2 and s1 becomes invalid.
+
+    println!("{}, world!", s1); // will give us an error
+
+    // we can copy a string typew by cloning it
+    // let s2=s1.clone();
 }
