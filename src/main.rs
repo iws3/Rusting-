@@ -878,21 +878,54 @@
 //     some_string
 // }
 
+// // WE CAN TAKE OWNERSHIP AND GIVE IT BACK
+// fn main(){
+//     // let s1=String::from()
+//     let s1=give_ownership();
+//     let s2=String::from("hello");
+//     let s3=takes_and_give_back(s2);
+//     println!("s1={}, s3={}", s1, s3);
+// }
 
-// WE CAN TAKE OWNERSHIP AND GIVE IT BACK
-fn main(){
-    // let s1=String::from()
-    let s1=give_ownership();
-    let s2=String::from("hello");
-    let s3=takes_and_give_back(s2);
-    println!("s1={}, s3={}", s1, s3);
+// fn give_ownership()->String {
+//     let some_string=String::from("hello");
+//     return some_string;
+// }
+
+// fn takes_and_give_back(a_string:String)->String {
+//     a_string
+// }
+
+// giving and taking back variables from functions can be tedious what if we can pass a variable without taking ownership?: that is where referncing comes in
+
+// REFERENCES
+
+// fn main() {
+//     // pass in our string here
+//     let s1 = String::from("hello");
+//     let len = calculate_length(&s1);
+//     // if we try to print s1 we have an error because its ownership hs been taken by the function. so the soltution is to borrow it to our function uisng the idea of referencing by adding & to our string type in function param to have-> &String and to when we are calling our function to have &s
+//     // references are immutrable by default
+//     // check rust book for the diagram
+//     // passing as refernces to function parameters is called borrowing
+
+//     println!("The length of '{}' is {}.",s1, len);
+// }
+
+// fn calculate_length(s: &String) -> usize {
+//     let length = s.len();
+//     length
+// }
+
+// handlng immutable varibales
+
+fn main() {
+    let mut s1 = String::from("hello");
+    change(&mut s1)
 }
 
-fn give_ownership()->String {
-    let some_string=String::from("hello");
-    return some_string;
-}
-
-fn takes_and_give_back(a_string:String)->String {
-    a_string
+// pass mutable reference instead tom utate value
+fn change(some_string:&mut String) {
+    // error because we are trying to mutate  a reference which is not mutable by default
+    some_string.push_str(", world")
 }
