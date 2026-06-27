@@ -919,13 +919,26 @@
 
 // handlng immutable varibales
 
-fn main() {
-    let mut s1 = String::from("hello");
-    change(&mut s1)
-}
+// mutating strings without taking ownership of the underlying value
 
-// pass mutable reference instead tom utate value
-fn change(some_string:&mut String) {
-    // error because we are trying to mutate  a reference which is not mutable by default
-    some_string.push_str(", world")
+// fn main() {
+//     let mut s1 = String::from("hello");
+//     change(&mut s1)
+// }
+
+// // pass mutable reference instead tom utate value
+// fn change(some_string:&mut String) {
+//     // error because we are trying to mutate  a reference which is not mutable by default
+//     some_string.push_str(", world")
+// }
+
+//LIMITATION RULE_1: YOU CAN ONLY HAVE 1 MUTABLE REFERNCE TO A PARTICULAR PIECE OF DATA IN A PARTICULAR SCOPE
+
+// eg
+fn main() {
+    let mut  s=String::from("hello");
+    let r1=&mut s;
+    let r2=&mut s;
+    println!("Printing r1={} and r2={}", r1, r2);
+
 }
