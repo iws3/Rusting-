@@ -717,7 +717,7 @@
 //     const SUB_COUNT:u32=100000;
 //     // println!(SUB_COUNT);
 
-//     // RUST HAS 4 SCALAR DATATYES: 
+//     // RUST HAS 4 SCALAR DATATYES:
 //     // INteger, floating point, booleanb, character
 //     // 8bits/16bits/64bits/128/arc
 
@@ -726,14 +726,11 @@
 //     // let (channel:&str, sub:i32)=tup
 //     let sub_count:i32=tup.1;
 
-
 // }
 
 // fn main() {
 //     exercise_1()
 // }
-
-
 
 // Loops in rust
 // fn main(){
@@ -742,14 +739,12 @@
 //     for element in a.iter() {
 //         println!("The value is: {}", element);
 //     }
-    
 
 //     // seconnd for loop
 //     for number in 1..4 {
 //         println!("{}!", number)
 //     }
 // }
-
 
 // fn main() {
 //     // erarys are static: ccreaqte an array with 8 values all set to 0's
@@ -784,7 +779,7 @@
 //         println!("Running forever....");
 //         if counter==10 {
 //         break counter;
-        
+
 //         }
 //         // break
 //         // adding break counter : will make this loop return counter
@@ -792,7 +787,6 @@
 //     };
 //     println!("The result is: {}", results);
 // }
-
 
 // ownership=> memory safety guarantee without using garabge collection
 
@@ -809,14 +803,13 @@
 //         let x:&str="hello";
 //         let y:i32=32;
 //         b()
-//     } 
+//     }
 
 //     fn b(){
-//         // stored in the heap and then store the pointer in the stack. pushing to stack is faster thatn allocated to the heap, necuase the heap spend time looking where to allocated 
+//         // stored in the heap and then store the pointer in the stack. pushing to stack is faster thatn allocated to the heap, necuase the heap spend time looking where to allocated
 //         let s=String::from("world")
 //     }
 // }
-
 
 // ownership rows in Rust
 
@@ -827,16 +820,14 @@
 //     // eg.
 //     { // s is not valid here
 //     let s:&str="hello";
-// // do something  with s, 
+// // do something  with s,
 // // string literals are stored in binmary and are fixed and cannot be mutated
 //     } // scope is now over, and s is no longer valid
 
 //     // string type is stored in the heap and can muted
 //     // let s=String::from("world")
 
-
 // }
-
 
 // fn main(){
 //     let x:i32=5;
@@ -852,7 +843,6 @@
 //     // we can copy a string typew by cloning it
 //     // let s2=s1.clone();
 // }
-
 
 // fn main() {
 //     let s=String::from("hello");
@@ -875,3 +865,34 @@
 // fn create_copy(val:i32){
 //     println!("{}", val);
 // }
+
+// fn main() {
+//     // what if we want to print values after passing it into functions, we use  functions with return keyword
+//     let return_val = return_string();
+//     println!("{}", return_val);
+// }
+
+// fn return_string() -> String {
+//     let some_string = String::from("hello");
+//     // when we return, ownership is moved to return_val above when we call the function above
+//     some_string
+// }
+
+
+// WE CAN TAKE OWNERSHIP AND GIVE IT BACK
+fn main(){
+    // let s1=String::from()
+    let s1=give_ownership();
+    let s2=String::from("hello");
+    let s3=takes_and_give_back(s2);
+    println!("s1={}, s3={}", s1, s3);
+}
+
+fn give_ownership()->String {
+    let some_string=String::from("hello");
+    return some_string;
+}
+
+fn takes_and_give_back(a_string:String)->String {
+    a_string
+}
