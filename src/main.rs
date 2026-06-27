@@ -838,17 +838,40 @@
 // }
 
 
-fn main(){
-    let x:i32=5;
-    let y:i32=x; //copy ... possible because they are fixed and stored in the stack and uses less memory
+// fn main(){
+//     let x:i32=5;
+//     let y:i32=x; //copy ... possible because they are fixed and stored in the stack and uses less memory
 
-    // but dealing with string types is not possible nbecause they are stored in the heap
+//     // but dealing with string types is not possible nbecause they are stored in the heap
 
-    let s1=String::from("hello");
-    let s2=s1; // this is a move and when this happens the value of s1 is completely moved to s2 and s1 becomes invalid.
+//     let s1=String::from("hello");
+//     let s2=s1; // this is a move and when this happens the value of s1 is completely moved to s2 and s1 becomes invalid.
 
-    println!("{}, world!", s1); // will give us an error
+//     println!("{}, world!", s1); // will give us an error
 
-    // we can copy a string typew by cloning it
-    // let s2=s1.clone();
-}
+//     // we can copy a string typew by cloning it
+//     // let s2=s1.clone();
+// }
+
+
+// fn main() {
+//     let s=String::from("hello");
+//     takeownership(s);
+//     // if we try to print s, we have an error becuase some strng has taken ownership
+//     println!("{}", s)
+//     // but it works for integers/float and other vars stored in the stack
+
+//     let x:i32=34;
+//     create_copy(x);
+//     // print x is still possible because it was copied
+
+// }
+
+// fn takeownership(some_string:String){
+//     println!("{}", some_string)
+
+// }
+
+// fn create_copy(val:i32){
+//     println!("{}", val);
+// }
