@@ -777,18 +777,27 @@
 
 // execute until we call break
 
-fn main(){
-    let mut counter:i32=0;
-    let results=loop {
-        counter+=1;
-        println!("Running forever....");
-        if counter==10 {
-        break counter;
+// fn main(){
+//     let mut counter:i32=0;
+//     let results=loop {
+//         counter+=1;
+//         println!("Running forever....");
+//         if counter==10 {
+//         break counter;
         
-        }
-        // break
-        // adding break counter : will make this loop return counter
-        // we can return values from this type of blocks, and if we dont add break, it runs forever
-    };
-    println!("The result is: {}", results);
+//         }
+//         // break
+//         // adding break counter : will make this loop return counter
+//         // we can return values from this type of blocks, and if we dont add break, it runs forever
+//     };
+//     println!("The result is: {}", results);
+// }
+
+
+// ownership=> memory safety guarantee without using garabge collection
+
+fn main(){
+    let s1=String::from("hello");
+    let s2=s1;
+    println!("{}", s1);
 }
