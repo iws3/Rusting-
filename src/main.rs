@@ -1087,26 +1087,59 @@
 // }
 
 // third case using structs -> its not clear what our fields in our turples are named in function signature above
+// // #[derive(Debug)]
 // #[derive(Debug)]
+// // {:#?}->make it a little pretier
+// struct Rectangle {
+//     width:u32,
+//     height:u32,
+// }
+// fn main() {
+// let rectangle=Rectangle {
+//     width:40,
+//     height:40,
+    
+// };
+// println!("The rectangle looks like this: {:#?}", rectangle);
+// println!("The area of the rectangle is: {}", area(&rectangle));
+// }
+
+
+// fn area(rectangle: &Rectangle)->u32{
+//     rectangle.width * rectangle.height
+// }
+
+// to see what our rectangle instance look like we use derive traits
+
+// FUNCTIONS IN A STRUCT ARE CALLED  -> methods
+
+// use the impl method_name 
+
+
 #[derive(Debug)]
-// {:#?}->make it a little pretier
+
 struct Rectangle {
     width:u32,
     height:u32,
-}
-fn main() {
-let rectangle=Rectangle {
-    width:40,
-    height:40,
     
-};
-println!("The rectangle looks like this: {:#?}", rectangle);
-println!("The area of the rectangle is: {}", area(&rectangle));
 }
 
-
-fn area(rectangle: &Rectangle)->u32{
-    rectangle.width * rectangle.height
+// implement method to calculate area, ir should be outside of the struct
+impl Rectangle {
+    fn area(&self)->u32 {
+        // self is pointing to the struct in which we call our method on, so this time around we are not taking ownership of
+        // it but passing a reference
+        self.width * self.height
+    }
 }
 
-// to see what our rectangle instance look like we use derive traits
+fn main() {
+    let rect=Rectangle {
+        width:45,
+        height:46
+    };
+
+    println!("The area calculated usind structs methods is: {:?}",rect.area())
+
+
+}
