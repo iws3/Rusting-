@@ -1014,11 +1014,40 @@ let mut user1=User {
     email:String::from("fon@gmail.com"),
     username:String::from("jufe@23"),
     sign_in_coount:23,
-    active:true
+    active:true,
 };
+// now lets use our function t create another user
+let user2=build_user(String::from("Paul@email.com"),String::from("Paul"));
 
 // we can get specifi values from our struct using the dot notation
 let name=user1.username;
 // we can also update items fdrom our struct using the dot notation first we make our suer 1 instance mut
-user1.username=String::from("PatJet")
+user1.username=String::from("PatJet");
+
+// we can create new instances using existing instances
+let mut user3=User {
+    email:String::from("fon@gmail.com"),
+    username:String::from("jila"),
+    // then copy the other ones
+    ..user2
+};
+
+user3.username=String::from("Paulloo");
+println!("Username for user 1 is {}:", user1.username);
+println!("Username for user 1 is {}:", user3.username);
+}
+
+
+// we can use functions to construct new instances of user
+fn build_user(email:String, username:String)->User {
+    // Fill init short hansd syntax, instead
+    // email:email, wee can do "email," since value and key are same
+
+    User {
+        email:email,
+        username:username,
+        active:true,
+        sign_in_coount:1,
+    }
+
 }
