@@ -963,6 +963,8 @@ fn main() {
 
     let word=first_word(&sample_string);
     sample_string.clear();
+
+    println!("{}", word);
     // println!("The word itself is: {}", sample_string[s_sample]);
     
     // if we do s.clear, our code still works even tho string has been cleared.. reason beign our index return is loose away from string
@@ -988,3 +990,6 @@ fn first_word(s: &String) -> &str {
     // return the string slice to the entire string
     &s[..]
 }
+
+
+// str : string literals are  String slices:
