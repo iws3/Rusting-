@@ -966,7 +966,7 @@
 
 //     println!("{}", word);
 //     // println!("The word itself is: {}", sample_string[s_sample]);
-    
+
 //     // if we do s.clear, our code still works even tho string has been cleared.. reason beign our index return is loose away from string
 // }
 
@@ -991,14 +991,11 @@
 //     &s[..]
 // }
 
-
 // str : string literals are  String slices:
-
 
 // ENUMS/STRUCTS ARE THE BUILDING BLOCKS FOR CREATING NEW TYPES IN RUSTS
 // grouping related data using strucs.. defining data and assocaited method using strucs and how it compares to turples
 // There are object attribute in an object orientatied programming langugae
-
 
 // create a struct for a user:
 // struct User {
@@ -1037,7 +1034,6 @@
 // println!("Username for user 1 is {}:", user3.username);
 // }
 
-
 // // we can use functions to construct new instances of user
 // fn build_user(email:String, username:String)->User {
 //     // Fill init short hansd syntax, instead
@@ -1059,7 +1055,6 @@
 //     struct Point(i32, i32, i32);
 // }
 
-
 // making calculating area of a rectangle with rust structs the best thing ever
 
 // rewrite the program below using structs
@@ -1069,7 +1064,6 @@
 //     let height1=50;
 //     println!("The area of a rectangle is {} square pixels.", area(width1, height1))
 // }
-
 
 // fn area(width:u32, height:u32)->u32{
 // width * height
@@ -1098,12 +1092,11 @@
 // let rectangle=Rectangle {
 //     width:40,
 //     height:40,
-    
+
 // };
 // println!("The rectangle looks like this: {:#?}", rectangle);
 // println!("The area of the rectangle is: {}", area(&rectangle));
 // }
-
 
 // fn area(rectangle: &Rectangle)->u32{
 //     rectangle.width * rectangle.height
@@ -1113,55 +1106,66 @@
 
 // FUNCTIONS IN A STRUCT ARE CALLED  -> methods
 
-// use the impl method_name 
-
+// use the impl method_name
 
 #[derive(Debug)]
 
 struct Rectangle {
-    width:u32,
-    height:u32,
-    
+    width: u32,
+    height: u32,
 }
 
 // implement method to calculate area, ir should be outside of the struct
 impl Rectangle {
-    fn area(&self)->u32 {
+    fn area(&self) -> u32 {
         // self is pointing to the struct in which we call our method on, so this time around we are not taking ownership of
         // it but passing a reference
         self.width * self.height
     }
 
     // methods to check if one rectangle can go inside of another:
-    fn can_hold(&self, other:&Rectangle)->bool {
+    fn can_hold(&self, other: &Rectangle) -> bool {
         self.width * self.height > other.width * other.height
     }
+
+    // implementing associated methods, we dont need to pass the &self property inside [they are not tide to the instance of our struct]
+    // we can do it inside of this implementation blog but structs allows to create somany implementation blocks
+}
+
+impl Rectangle {
+    fn square(size: u32) -> Rectangle {
+        // Returen the rectnagle instance and pass in size for both height and widht
+        Rectangle {
+            width: size,
+            height: size,
+        }
+    }
+    // to call our associated method we dont use the dot notations we use the :: syntax: Rectangle::square(23);
 }
 
 fn main() {
-    let rect=Rectangle {
-        width:45,
-        height:46
+    let rect = Rectangle {
+        width: 45,
+        height: 46,
     };
 
-    let rect2=Rectangle {
-        width:56,
-        height:56,
+    let rect2 = Rectangle {
+        width: 56,
+        height: 56,
     };
+
+    let square=Rectangle::square(34);
 
     // in lan like c++ there is a diference in way you are calling the function on a methods directly  or calling a methoid on a pointer to a object..
     // Rust its the same because it has something called:
-// explore automatic referencing and Dereferencing
-    println!("The area calculated usind structs methods is: {:?}",rect.area());
-    if rect.can_hold(&rect2)==true {
-println!("Area one is bigger than area 2😂");
-    } 
-    else {
-println!("Area two is bigger than area one 😂");
-
+    // explore automatic referencing and Dereferencing
+    println!(
+        "The area calculated usind structs methods is: {:?}",
+        rect.area()
+    );
+    if rect.can_hold(&rect2) == true {
+        println!("Area one is bigger than area 2😂");
+    } else {
+        println!("Area two is bigger than area one 😂");
     }
-
-    
-
-
 }
