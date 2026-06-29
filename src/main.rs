@@ -951,45 +951,74 @@
 
 //  slices let you reference a  contigouse block of elements within a collectiom instead of referencing the entire collection without taking ownership
 
-fn main() {
-    let mut sample_string = String::from("Hello, World");
+// fn main() {
+//     let mut sample_string = String::from("Hello, World");
 
-    let  s_sample = first_word(&sample_string);
-    // get string slices
-    let hello=&sample_string[..5];
-    let whole_word=&sample_string[..];
-    let world=&sample_string[6..];
-    println!("The results gotten is: {}", s_sample);
+//     let  s_sample = first_word(&sample_string);
+//     // get string slices
+//     let hello=&sample_string[..5];
+//     let whole_word=&sample_string[..];
+//     let world=&sample_string[6..];
+//     println!("The results gotten is: {}", s_sample);
 
-    let word=first_word(&sample_string);
-    sample_string.clear();
+//     let word=first_word(&sample_string);
+//     sample_string.clear();
 
-    println!("{}", word);
-    // println!("The word itself is: {}", sample_string[s_sample]);
+//     println!("{}", word);
+//     // println!("The word itself is: {}", sample_string[s_sample]);
     
-    // if we do s.clear, our code still works even tho string has been cleared.. reason beign our index return is loose away from string
-}
+//     // if we do s.clear, our code still works even tho string has been cleared.. reason beign our index return is loose away from string
+// }
 
 // write a function to take a reerence of that string and return the index of the last element [return first word]
 
 // ONE WAY TO DO IT:
 // after changing the format to get slices above, we change the return type from the index to return string
-fn first_word(s: &String) -> &str {
-    // convert string to an bytes? why that?
-    let bytes = s.as_bytes();
+// fn first_word(s: &String) -> &str {
+//     // convert string to an bytes? why that?
+//     let bytes = s.as_bytes();
 
-    for (i, &item) in bytes.iter().enumerate() {
-        if item == b' ' {
-            // if item is space... we have = hit the end of the word
-            // return i;
-            // return the string slice from the begining of the word to the place where the slice was found
-            return &s[0..i];
-        }
-    }
-    // instead of return ing s.len()
-    // return the string slice to the entire string
-    &s[..]
-}
+//     for (i, &item) in bytes.iter().enumerate() {
+//         if item == b' ' {
+//             // if item is space... we have = hit the end of the word
+//             // return i;
+//             // return the string slice from the begining of the word to the place where the slice was found
+//             return &s[0..i];
+//         }
+//     }
+//     // instead of return ing s.len()
+//     // return the string slice to the entire string
+//     &s[..]
+// }
 
 
 // str : string literals are  String slices:
+
+
+// ENUMS/STRUCTS ARE THE BUILDING BLOCKS FOR CREATING NEW TYPES IN RUSTS
+// grouping related data using strucs.. defining data and assocaited method using strucs and how it compares to turples
+// There are object attribute in an object orientatied programming langugae
+
+
+// create a struct for a user:
+struct User {
+    username:String,
+    email:String,
+    sign_in_coount:u64,
+    active:bool,
+}
+
+fn main(){
+// create a new instance:
+let mut user1=User {
+    email:String::from("fon@gmail.com"),
+    username:String::from("jufe@23"),
+    sign_in_coount:23,
+    active:true
+};
+
+// we can get specifi values from our struct using the dot notation
+let name=user1.username;
+// we can also update items fdrom our struct using the dot notation first we make our suer 1 instance mut
+user1.username=String::from("PatJet")
+}
