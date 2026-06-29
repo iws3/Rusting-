@@ -1077,11 +1077,36 @@
 
 // improve the readabilty by grouping this two variables together using tuples
 
-fn main () {
-    let rect=(30, 50);
-    println!("The value of our area calculated is : {}: ", area(rect));
+// fn main () {
+//     let rect=(30, 50);
+//     println!("The value of our area calculated is : {}: ", area(rect));
+// }
+
+// fn area(dimensions: (u32, u32))->u32 {
+//     dimensions.0 * dimensions.1
+// }
+
+// third case using structs -> its not clear what our fields in our turples are named in function signature above
+// #[derive(Debug)]
+#[derive(Debug)]
+// {:#?}->make it a little pretier
+struct Rectangle {
+    width:u32,
+    height:u32,
+}
+fn main() {
+let rectangle=Rectangle {
+    width:40,
+    height:40,
+    
+};
+println!("The rectangle looks like this: {:#?}", rectangle);
+println!("The area of the rectangle is: {}", area(&rectangle));
 }
 
-fn area(dimensions: (u32, u32))->u32 {
-    dimensions.0 * dimensions.1
+
+fn area(rectangle: &Rectangle)->u32{
+    rectangle.width * rectangle.height
 }
+
+// to see what our rectangle instance look like we use derive traits
