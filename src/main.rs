@@ -934,11 +934,57 @@
 
 //LIMITATION RULE_1: YOU CAN ONLY HAVE 1 MUTABLE REFERNCE TO A PARTICULAR PIECE OF DATA IN A PARTICULAR SCOPE
 
-// eg
-fn main() {
-    let mut  s=String::from("hello");
-    let r1=&mut s;
-    let r2=&mut s;
-    println!("Printing r1={} and r2={}", r1, r2);
+// // eg
+// fn main() {
+//     let mut  s=String::from("hello");
+//     let r1=&mut s;
+//     // second mutable error problem here
+//     let r2=&mut s;
+//     // prevent race conditons
+//     println!("Printing r1={} and r2={}", r1, r2);
 
+// }
+
+// slices
+
+// slices do not takle ownership
+
+//  slices let you reference a  contigouse block of elements within a collectiom instead of referencing the entire collection without taking ownership
+
+fn main() {
+    let mut sample_string = String::from("Hello, World");
+
+    let  s_sample = first_word(&sample_string);
+    // get string slices
+    let hello=&sample_string[..5];
+    let whole_word=&sample_string[..];
+    let world=&sample_string[6..];
+    println!("The results gotten is: {}", s_sample);
+
+    let word=first_word(&sample_string);
+    sample_string.clear();
+    // println!("The word itself is: {}", sample_string[s_sample]);
+    
+    // if we do s.clear, our code still works even tho string has been cleared.. reason beign our index return is loose away from string
+}
+
+// write a function to take a reerence of that string and return the index of the last element [return first word]
+
+// ONE WAY TO DO IT:
+// after changing the format to get slices above, we change the return type from the index to return string
+fn first_word(s: &String) -> &str {
+    // convert string to an bytes? why that?
+    let bytes = s.as_bytes();
+
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            // if item is space... we have = hit the end of the word
+            // return i;
+            // return the string slice from the begining of the word to the place where the slice was found
+            return &s[0..i];
+        }
+    }
+    // instead of return ing s.len()
+    // return the string slice to the entire string
+    &s[..]
 }
