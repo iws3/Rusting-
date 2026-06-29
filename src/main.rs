@@ -1131,6 +1131,11 @@ impl Rectangle {
         // it but passing a reference
         self.width * self.height
     }
+
+    // methods to check if one rectangle can go inside of another:
+    fn can_hold(&self, other:&Rectangle)->bool {
+        self.width * self.height > other.width * other.height
+    }
 }
 
 fn main() {
@@ -1139,7 +1144,24 @@ fn main() {
         height:46
     };
 
-    println!("The area calculated usind structs methods is: {:?}",rect.area())
+    let rect2=Rectangle {
+        width:56,
+        height:56,
+    };
+
+    // in lan like c++ there is a diference in way you are calling the function on a methods directly  or calling a methoid on a pointer to a object..
+    // Rust its the same because it has something called:
+// explore automatic referencing and Dereferencing
+    println!("The area calculated usind structs methods is: {:?}",rect.area());
+    if rect.can_hold(&rect2)==true {
+println!("Area one is bigger than area 2😂");
+    } 
+    else {
+println!("Area two is bigger than area one 😂");
+
+    }
+
+    
 
 
 }
