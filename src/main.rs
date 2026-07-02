@@ -1182,7 +1182,7 @@ enum IpAddressKind {
     IPV4,
     IPV6,
 }
-
+// getting started
 fn main() {
     let four=IpAddressKind::IPV4;
     let six=IpAddressKind::IPV6;
