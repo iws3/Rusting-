@@ -1178,14 +1178,32 @@
 // ___________________________________________________________________________________________
 
 
-enum IpAddressKind {
-    IPV4,
-    IPV6,
+// enum IpAddressKind {
+//     IPV4,
+//     IPV6,
+// }
+// enum variants can also hold data
+
+enum IpAdressKid {
+    IPV4(String),
+    IPV6(u8, u8, u8)
 }
 // getting started
+// using structs to create ip addresses
+struct IpAddr {
+    kind: IpAddressKind,
+    address:String,
+}
+
+
 fn main() {
-    let four=IpAddressKind::IPV4;
+    let four=IpAddressKind::IPV4(String::from("hello"));
     let six=IpAddressKind::IPV6;
+    // actual ip address
+    let localhost=IpAddr {
+        kind:IpAddressKind::IPV4,
+        address: String::from("127.0.0.1")
+    }
 }
 
 
