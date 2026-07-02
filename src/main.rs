@@ -1187,3 +1187,8 @@ fn main() {
     let four=IpAddressKind::IPV4;
     let six=IpAddressKind::IPV6;
 }
+
+
+fn route(ip_kind:IpAddressKind) {
+    
+}
