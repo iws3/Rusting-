@@ -1178,35 +1178,72 @@
 // ___________________________________________________________________________________________
 
 
+// // enum IpAddressKind {
+// //     IPV4,
+// //     IPV6,
+// // }
+// // enum variants can also hold data
+
 // enum IpAddressKind {
-//     IPV4,
-//     IPV6,
+//     IPV4(String),
+//     IPV6(u8, u8, u8)
 // }
-// enum variants can also hold data
-
-enum IpAdressKid {
-    IPV4(String),
-    IPV6(u8, u8, u8)
-}
-// getting started
-// using structs to create ip addresses
-struct IpAddr {
-    kind: IpAddressKind,
-    address:String,
-}
+// // getting started
+// // using structs to create ip addresses
+// struct IpAddr {
+//     kind: IpAddressKind,
+//     address:String,
+// }
 
 
-fn main() {
-    let four=IpAddressKind::IPV4(String::from("hello"));
-    let six=IpAddressKind::IPV6;
-    // actual ip address
-    let localhost=IpAddr {
-        kind:IpAddressKind::IPV4,
-        address: String::from("127.0.0.1")
-    }
-}
+// fn main() {
+//     let four=IpAddressKind::IPV4(String::from("hello"));
+//     let six=IpAddressKind::IPV6;
+//     // actual ip address
+//     let localhost=IpAddr {
+//         kind:IpAddressKind::IPV4,
+//         address: String::from("127.0.0.1")
+//     }
+// }
 
 
-fn route(ip_kind:IpAddressKind) {
+// fn route(ip_kind:IpAddressKind) {
     
+// }
+
+
+// option type in Rust
+// there is no null value in Rust
+//  enum  Option<T> {
+//         Some(T), 
+//         None
+//     }
+
+// Option enum is use to handle null value cases 
+// have a value that potential nbe none or not exist then 
+// you add it to the Option enum
+// fn main() {
+
+//    let some_number=Some(5);
+// //    type will be inferd automaticall from the value pass above
+// let some_string=Some("some string");
+// let absent_number=None;
+//     // this is included in our program scope by defau
+// }
+
+
+// pattern mathcing in rust
+#[derive(Debug)]
+fn main() {
+    let five=Some(5);
+    let six=plus_one(five);
+    let none=plus_one(None);
+    println!("{} matches grearly", six);
+}
+
+fn plus_one(x:Option<i32>)->Option<i32> {
+    match x {
+        None=>None,
+        Some(i)=>Some(i+1)
+    }
 }
