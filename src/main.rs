@@ -1335,22 +1335,27 @@
 
 
 
-mod kitchen {
+// mod kitchen {
 
-    fn secret_recipe() {
-        println!("garlic buster.. i am cokking rh foood");
-    } 
+//     fn secret_recipe() {
+//         println!("garlic buster.. i am cokking rh foood");
+//     } 
 
-    pub mod private_keitchen {
-        pub fn private_secrete(){
-            // i want to acces the private module here
-            super::secret_recipe();
-            println!("after printing secrete module");
-        } 
-    }
-}
+//     pub mod private_keitchen {
+//         pub fn private_secrete(){
+//             // i want to acces the private module here
+//             super::secret_recipe();
+//             println!("after printing secrete module");
+//         } 
+//     }
+// }
 
 
-fn main(){
-    kitchen::private_keitchen::private_secrete();
+// fn main(){
+//     kitchen::private_keitchen::private_secrete();
+// }
+use rust_course::greet;
+
+fn main() {
+
 }
