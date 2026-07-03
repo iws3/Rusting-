@@ -1303,22 +1303,54 @@
 
 
 
+// mod kitchen {
+//    pub fn cook() {
+//         println!("Cooking in the kitchen!");
+//     }
+//     // This module is Private
+// }
+
+
+// fn main(){
+//     kitchen::cook();
+//     // this will cause a compile time error because cook is private
+// }
+
+
+
+// Critical: child module can always see into its parent, even without he pub. Privacy onlyblocks outside access, never upward access
+
+// mod kitchen {
+//     fn secret_recipe() {
+//         println!("garlic butter");
+//     }
+
+//     pub mod grill {
+//         pub fn cook_steak() {
+//             super::secret_recipe(); // Accessing the parent module's private function
+//             println!("Cooking steak with secret recipe!");
+//         }
+//     }
+// }
+
+
+
 mod kitchen {
-    fn cook() {
-        println!("Cooking in the kitchen!");
+
+    fn secret_recipe() {
+        println!("garlic buster.. i am cokking rh foood");
+    } 
+
+    pub mod private_keitchen {
+        pub fn private_secrete(){
+            // i want to acces the private module here
+            super::secret_recipe();
+            println!("after printing secrete module");
+        } 
     }
-    // This module is Private
 }
 
 
 fn main(){
-    kitchen::cook();
-    // this will cause a compile time error because cook is private
+    kitchen::private_keitchen::private_secrete();
 }
-
-
-
-
-
-
-
