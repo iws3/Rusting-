@@ -1214,36 +1214,76 @@
 
 // option type in Rust
 // there is no null value in Rust
-//  enum  Option<T> {
-//         Some(T), 
-//         None
-//     }
+// //  enum  Option<T> {
+// //         Some(T), 
+// //         None
+// //     }
 
-// Option enum is use to handle null value cases 
-// have a value that potential nbe none or not exist then 
-// you add it to the Option enum
+// // Option enum is use to handle null value cases 
+// // have a value that potential nbe none or not exist then 
+// // you add it to the Option enum
+// // fn main() {
+
+// //    let some_number=Some(5);
+// // //    type will be inferd automaticall from the value pass above
+// // let some_string=Some("some string");
+// // let absent_number=None;
+// //     // this is included in our program scope by defau
+// // }
+
+
+// // pattern mathcing in rust
+
 // fn main() {
+//     let five=Some(5);
+//     let six=plus_one(five);
+//     let none=plus_one(None);
+//     println!("{} matches grearly", six);
+// }
 
-//    let some_number=Some(5);
-// //    type will be inferd automaticall from the value pass above
-// let some_string=Some("some string");
-// let absent_number=None;
-//     // this is included in our program scope by defau
+// fn plus_one(x:Option<i32>)->Option<i32> {
+//     match x {
+//         None=>None,
+//         Some(i)=>Some(i+1)
+//     }
 // }
 
 
-// pattern mathcing in rust
-#[derive(Debug)]
-fn main() {
-    let five=Some(5);
-    let six=plus_one(five);
-    let none=plus_one(None);
-    println!("{} matches grearly", six);
-}
 
-fn plus_one(x:Option<i32>)->Option<i32> {
-    match x {
-        None=>None,
-        Some(i)=>Some(i+1)
+mod kitchen {
+    pub fn cook() {
+        println!("Cooking in the kitchen!");
+    }
+
+    fn wash_dishes() {
+        println!("Washing dishes in the kitchen!");
     }
 }
+
+
+fn main() {
+    kitchen::cook();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
