@@ -1295,14 +1295,26 @@
 
 
 
-mod kitchen;
+// mod kitchen;
 
-fn main() {
-    kitchen::cook();
+// fn main() {
+//     kitchen::cook();
+// }
+
+
+
+mod kitchen {
+    fn cook() {
+        println!("Cooking in the kitchen!");
+    }
+    // This module is Private
 }
 
 
-
+fn main(){
+    kitchen::cook();
+    // this will cause a compile time error because cook is private
+}
 
 
 
