@@ -1250,22 +1250,41 @@
 
 
 
-mod kitchen {
-    pub fn cook() {
-        println!("Cooking in the kitchen!");
+// mod kitchen {
+//     pub fn cook() {
+//         println!("Cooking in the kitchen!");
+//     }
+// // :: (the "path" separator)
+//     fn wash_dishes() {
+//         println!("Washing dishes in the kitchen!");
+//     }
+// }
+
+
+// fn main() {
+//     kitchen::cook();
+// }
+
+
+mod restaurant {
+    pub mod kitchen {
+        pub fn cook() {
+            println!("Cooking in the kitchen!");
+        }
     }
 
-    fn wash_dishes() {
-        println!("Washing dishes in the kitchen!");
+    pub mod front_of_house {
+        pub  fn greet_customer() {
+            println!("Welcome to the restaurant!");
+        }
     }
 }
 
 
 fn main() {
-    kitchen::cook();
+    restaurant::kitchen::cook();
+    restaurant::front_of_house::greet_customer();
 }
-
-
 
 
 
