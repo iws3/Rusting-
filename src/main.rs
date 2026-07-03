@@ -1266,36 +1266,40 @@
 // }
 
 
-mod restaurant {
-    pub mod kitchen {
-        pub fn cook() {
-            println!("Cooking in the kitchen!");
-        }
-    }
+// mod restaurant {
+//     pub mod kitchen {
+//         pub fn cook() {
+//             println!("Cooking in the kitchen!");
+//         }
+//     }
 
-    pub mod front_of_house {
-        pub  fn greet_customer() {
-            println!("Welcome to the restaurant!");
-        }
-    }
-}
+//     pub mod front_of_house {
+//         pub  fn greet_customer() {
+//             println!("Welcome to the restaurant!");
+//         }
+//     }
+// }
 
+
+// fn main() {
+//     restaurant::kitchen::cook();
+//     restaurant::front_of_house::greet_customer();
+// }
+
+
+
+
+
+
+
+
+
+
+mod kitchen;
 
 fn main() {
-    restaurant::kitchen::cook();
-    restaurant::front_of_house::greet_customer();
+    kitchen::cook();
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
