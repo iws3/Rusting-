@@ -1354,8 +1354,16 @@
 // fn main(){
 //     kitchen::private_keitchen::private_secrete();
 // }
-use rust_course::greet;
+// use rust_course::greet;
+
+// fn main() {
+
+// }
+
+use rand::Rng;
 
 fn main() {
-
+    let mut rng=rand::thread_rng();
+    let n:u32=rng.gen_range(1..=100);
+    println!("{n}");
 }
