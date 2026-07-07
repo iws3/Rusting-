@@ -1368,9 +1368,27 @@
 //     println!("{n}");
 // }
 
-mod kitchen;
+// mod kitchen;
 
+// fn main() {
+//     kitchen::grill::anything_here();
+//     kitchen::oven::oven_here();
+// }
+
+
+// stufyin external crates
+
+use rand::Rng;
 fn main() {
-    kitchen::grill::anything_here();
-    kitchen::oven::oven_here();
+    let mut rng=rand::thread_rng();
+    for i in (1..100) {
+          let n: u32=rng.gen_range(1..=100);
+    println!("{n}");
+    // println!("{n}");
+    
+
+    }
+    // let n: u32=rng.gen_range(1..=100);
+    // println!("{n}");
+    // println!("{n}")
 }
