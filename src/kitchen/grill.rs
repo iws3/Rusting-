@@ -1,3 +1,4 @@
-pub fn sear() {
-    println!("searing food!");
+pub fn anything_here() {
+    println!("anything here!");
+
 }

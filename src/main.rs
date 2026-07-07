@@ -1367,9 +1367,10 @@
 //     let n:u32=rng.gen_range(1..=100);
 //     println!("{n}");
 // }
+
 mod kitchen;
+
 fn main() {
-    kitchen::cook();
-    kitchen::grill::sear();
-    kitchen::oven::bake();
+    kitchen::grill::anything_here();
+    kitchen::oven::oven_here();
 }

@@ -2,6 +2,6 @@ pub mod grill;
 pub mod oven;
 
 
-pub fn cook(){
-    println!("cooking food!");
+pub fn cook() {
+    println!("Cooking in the kitchen!");
 }
