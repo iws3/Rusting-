@@ -1378,17 +1378,28 @@
 
 // stufyin external crates
 
-use rand::Rng;
-fn main() {
-    let mut rng=rand::thread_rng();
-    for i in (1..100) {
-          let n: u32=rng.gen_range(1..=100);
-    println!("{n}");
-    // println!("{n}");
+// use rand::Rng;
+// fn main() {
+//     let mut rng=rand::thread_rng();
+//     for i in (1..100) {
+//           let n: u32=rng.gen_range(1..=100);
+//     println!("{n}");
+//     // println!("{n}");
     
 
-    }
-    // let n: u32=rng.gen_range(1..=100);
-    // println!("{n}");
-    // println!("{n}")
+//     }
+//     // let n: u32=rng.gen_range(1..=100);
+//     // println!("{n}");
+//     // println!("{n}")
+// }
+
+
+use rust_course::{Task, Priority};
+
+fn main() {
+   let task1=Task::new("Finish Rust project", Priority::High, Some("Complete the Rust project by the end of the week".to_string()));
+   let task2=Task::new("Buy groceries", Priority::Medium, None);
+
+   println!("Task 1: {} (Priority: {:?}) - {:?}", task1.title, task1.priority, task1.description);
+   println!("{:?}", task1.display());
 }
