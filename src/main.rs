@@ -1394,12 +1394,62 @@
 // }
 
 
-use rust_course::{Task, Priority};
+// use rust_course::{Task, Priority};
 
-fn main() {
-   let task1=Task::new("Finish Rust project", Priority::High, Some("Complete the Rust project by the end of the week".to_string()));
-   let task2=Task::new("Buy groceries", Priority::Medium, None);
+// fn main() {
+//    let task1=Task::new("Finish Rust project", Priority::High, Some("Complete the Rust project by the end of the week".to_string()));
+//    let task2=Task::new("Buy groceries", Priority::Medium, None);
 
-   println!("Task 1: {} (Priority: {:?}) - {:?}", task1.title, task1.priority, task1.description);
-   println!("{:?}", task1.display());
-}
+//    println!("Task 1: {} (Priority: {:?}) - {:?}", task1.title, task1.priority, task1.description);
+//    println!("{:?}", task1.display());
+// }
+
+// UNDERTANDING GENERICS.TRAITS.LIFETIMES IN RUSTS
+// above is to reduce code deduplication
+
+
+// 1. generics
+
+use core::num;
+
+// scenario 1: [terrible code with repetition]
+// #[derive(Debug)]
+// fn main() {
+//     let number_list=vec![34, 50, 25, 100, 65];
+//     println!("{:?}", number_list);
+
+//    //  find the largest number in the list
+
+//    let mut largest=number_list[0];
+
+//    for number in number_list {
+//       if number > largest {
+//          largest=number;
+//       }
+//    }
+
+//    println!("The largest number is {}", largest);
+
+   // what if we want to check the largest values in another vext2 [list2] --> we will duplicate the code above .. [terrible design].
+
+   //another solutrion might be to extrac the logic to find the largest number into itsd own function and just call with different vectors
+
+   
+   fn get_largest(number_list:Vec<i32>)->i32 {
+      let mut largest=number_list[0];
+      for number in number_list {
+         if number > largest {
+            largest=number;
+         }
+      }
+      largest
+   }
+
+   fn main() {
+let my_list=vec![12, 45, 657, 56, 45];
+
+let largest=get_largest(my_list);
+// we can then call our function with somany different vectors if we want
+println!("The largest value is: {}", largest);
+
+   }
