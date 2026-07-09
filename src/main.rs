@@ -1170,13 +1170,11 @@
 // //     }
 // // }
 
-
 // // _________________________________________________________________________________________
 
 // //  Structs and enums are the building blocks for creating new types in rust
 // //  ENUMS & pattern matching
 // // ___________________________________________________________________________________________
-
 
 // // // enum IpAddressKind {
 // // //     IPV4,
@@ -1195,7 +1193,6 @@
 // //     address:String,
 // // }
 
-
 // // fn main() {
 // //     let four=IpAddressKind::IPV4(String::from("hello"));
 // //     let six=IpAddressKind::IPV6;
@@ -1206,21 +1203,19 @@
 // //     }
 // // }
 
-
 // // fn route(ip_kind:IpAddressKind) {
-    
-// // }
 
+// // }
 
 // // option type in Rust
 // // there is no null value in Rust
 // // //  enum  Option<T> {
-// // //         Some(T), 
+// // //         Some(T),
 // // //         None
 // // //     }
 
-// // // Option enum is use to handle null value cases 
-// // // have a value that potential nbe none or not exist then 
+// // // Option enum is use to handle null value cases
+// // // have a value that potential nbe none or not exist then
 // // // you add it to the Option enum
 // // // fn main() {
 
@@ -1230,7 +1225,6 @@
 // // // let absent_number=None;
 // // //     // this is included in our program scope by defau
 // // // }
-
 
 // // // pattern mathcing in rust
 
@@ -1248,8 +1242,6 @@
 // //     }
 // // }
 
-
-
 // // mod kitchen {
 // //     pub fn cook() {
 // //         println!("Cooking in the kitchen!");
@@ -1260,11 +1252,9 @@
 // //     }
 // // }
 
-
 // // fn main() {
 // //     kitchen::cook();
 // // }
-
 
 // // mod restaurant {
 // //     pub mod kitchen {
@@ -1280,28 +1270,16 @@
 // //     }
 // // }
 
-
 // // fn main() {
 // //     restaurant::kitchen::cook();
 // //     restaurant::front_of_house::greet_customer();
 // // }
-
-
-
-
-
-
-
-
-
 
 // // mod kitchen;
 
 // // fn main() {
 // //     kitchen::cook();
 // // }
-
-
 
 // // mod kitchen {
 // //    pub fn cook() {
@@ -1310,13 +1288,10 @@
 // //     // This module is Private
 // // }
 
-
 // // fn main(){
 // //     kitchen::cook();
 // //     // this will cause a compile time error because cook is private
 // // }
-
-
 
 // // Critical: child module can always see into its parent, even without he pub. Privacy onlyblocks outside access, never upward access
 
@@ -1333,23 +1308,20 @@
 // //     }
 // // }
 
-
-
 // // mod kitchen {
 
 // //     fn secret_recipe() {
 // //         println!("garlic buster.. i am cokking rh foood");
-// //     } 
+// //     }
 
 // //     pub mod private_keitchen {
 // //         pub fn private_secrete(){
 // //             // i want to acces the private module here
 // //             super::secret_recipe();
 // //             println!("after printing secrete module");
-// //         } 
+// //         }
 // //     }
 // // }
-
 
 // // fn main(){
 // //     kitchen::private_keitchen::private_secrete();
@@ -1375,7 +1347,6 @@
 //     kitchen::oven::oven_here();
 // }
 
-
 // stufyin external crates
 
 // use rand::Rng;
@@ -1385,14 +1356,12 @@
 //           let n: u32=rng.gen_range(1..=100);
 //     println!("{n}");
 //     // println!("{n}");
-    
 
 //     }
 //     // let n: u32=rng.gen_range(1..=100);
 //     // println!("{n}");
 //     // println!("{n}")
 // }
-
 
 // use rust_course::{Task, Priority};
 
@@ -1406,7 +1375,6 @@
 
 // UNDERTANDING GENERICS.TRAITS.LIFETIMES IN RUSTS
 // above is to reduce code deduplication
-
 
 // 1. generics
 
@@ -1430,11 +1398,10 @@ use core::num;
 
 //    println!("The largest number is {}", largest);
 
-   // what if we want to check the largest values in another vext2 [list2] --> we will duplicate the code above .. [terrible design].
+// what if we want to check the largest values in another vext2 [list2] --> we will duplicate the code above .. [terrible design].
 
-   //another solutrion might be to extrac the logic to find the largest number into itsd own function and just call with different vectors
+//another solutrion might be to extrac the logic to find the largest number into itsd own function and just call with different vectors
 
-   
 //    fn get_largest(number_list:Vec<i32>)->i32 {
 //       let mut largest=number_list[0];
 //       for number in number_list {
@@ -1454,27 +1421,67 @@ use core::num;
 
 //    }
 
-
 // PROBLEM 3: WHAT IF WE WANT TO DO IT FOR DIFFERENT TYPES
 // ABOVE OUR FUNCTION IS TIGHT TO A NUMBER LIST WHICH HAS TO BEA VECTOR OF SIGN 32 BITS --> WHAT IF WE WANT TO USE THE SAME  LOGIC OVER AA LIST OF CHARS
 
-
 // solution 1_duplication: duplicated our get largest_function for int to now  get_largets_char and shuld now accept Vec<char>
 
-fn get_largets(number_list:Vec<char>)->char{
+// fn get_largets(number_list:Vec<char>)->char{
 
-     let mut largest=number_list[0];
-      for number in number_list {
-         if number > largest {
-            largest=number;
-         }
-      }
-      largest
+//      let mut largest=number_list[0];
+//       for number in number_list {
+//          if number > largest {
+//             largest=number;
+//          }
+//       }
+//       largest
 
+// }
+
+// fn main() {
+//    let char_list=vec!['y', 'm', 'a', 'p'];
+//    let largest=get_largets(char_list);
+//    println!("{}", largest);
+// }
+
+// TO SOLVE THIS DUPLICATION WE CANM USE GENERICS: ALLOW OUR ORIGINAL FUNCTIO TO TAKE IN TWO SETS OF ARGUMENTS
+
+// note we can have multiple geeric types <T, U, V> etc
+fn get_largest<T: PartialOrd + Copy>(my_list: Vec<T>) -> T {
+    let mut largest = my_list[0];
+    for number in my_list {
+        // we can not use the greater operatror on our type : T {we solve this with traits -><T:PartialOrd + Copy> -> our type T can be ordeed and can be copied eg int, chars}
+        if number > largest {
+            largest = number;
+        }
+    }
+
+    largest
+}
+
+// sw can also use Generics in structs
+
+// struct Point {
+//     x: i32,
+//     y: i32,
+// }
+
+// fn main() {
+//     let p1 = Point { x: 4, y: 7 };
+// }
+
+
+// to create a points of diverse types we need to use structs
+
+struct Point<T,U> {
+   x:T,
+   y:U,
 }
 
 fn main() {
-   let char_list=vec!['y', 'm', 'a', 'p'];
-   let largest=get_largets(char_list);
-   println!("{}", largest);
+   let p1=Point {x:3, y:10};
+   let p2=Point{x:3.5, y:34.4};
+   // if we change the pint inside our p2 to both int, and float of different types of x and y , it will give us an error
+   let p3=Point {x:23, y:45.3};
+   // thats why we have two generic types above
 }
