@@ -1435,21 +1435,46 @@ use core::num;
    //another solutrion might be to extrac the logic to find the largest number into itsd own function and just call with different vectors
 
    
-   fn get_largest(number_list:Vec<i32>)->i32 {
-      let mut largest=number_list[0];
+//    fn get_largest(number_list:Vec<i32>)->i32 {
+//       let mut largest=number_list[0];
+//       for number in number_list {
+//          if number > largest {
+//             largest=number;
+//          }
+//       }
+//       largest
+//    }
+
+//    fn main() {
+// let my_list=vec![12, 45, 657, 56, 45];
+
+// let largest=get_largest(my_list);
+// // we can then call our function with somany different vectors if we wan
+// println!("The largest value is: {}", largest);
+
+//    }
+
+
+// PROBLEM 3: WHAT IF WE WANT TO DO IT FOR DIFFERENT TYPES
+// ABOVE OUR FUNCTION IS TIGHT TO A NUMBER LIST WHICH HAS TO BEA VECTOR OF SIGN 32 BITS --> WHAT IF WE WANT TO USE THE SAME  LOGIC OVER AA LIST OF CHARS
+
+
+// solution 1_duplication: duplicated our get largest_function for int to now  get_largets_char and shuld now accept Vec<char>
+
+fn get_largets(number_list:Vec<char>)->char{
+
+     let mut largest=number_list[0];
       for number in number_list {
          if number > largest {
             largest=number;
          }
       }
       largest
-   }
 
-   fn main() {
-let my_list=vec![12, 45, 657, 56, 45];
+}
 
-let largest=get_largest(my_list);
-// we can then call our function with somany different vectors if we want
-println!("The largest value is: {}", largest);
-
-   }
+fn main() {
+   let char_list=vec!['y', 'm', 'a', 'p'];
+   let largest=get_largets(char_list);
+   println!("{}", largest);
+}
